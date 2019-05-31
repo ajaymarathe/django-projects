@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from blog.models import Post
 from blog.forms import CommentForm
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Questions
 
 # index view
 def blog_index(request):
@@ -15,11 +15,9 @@ def blog_index(request):
 
 # category view
 def blog_category(request, category):
-    posts = Post.objects.filter(
-        categories__name__contains=category
-    ).order_by(
-        '-created_on'
-    )
+    posts = Post.objects.filter(categories__name__contains=category)\
+        .order_by('-created_on')
+
     context = {
         "category": category,
         "posts": posts
@@ -45,3 +43,12 @@ def blog_detail(request, pk):
     context = {"post": post, "comments": comments, "form": form}
 
     return render(request, "blog_detail.html", context)
+
+def forum(request):
+    questions = Questions.objects.all()
+    context = {
+        "questions": questions,
+    }
+    return render(request, "index.html",context)
+
+

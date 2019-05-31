@@ -21,3 +21,9 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey("Post", on_delete=models.CASCADE)
+
+# question model
+
+class Questions(models.Model):
+    title =  models.CharField(max_length=191)
+    body = models.TextField()
