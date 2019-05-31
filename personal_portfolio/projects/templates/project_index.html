@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+    <div class="container mt-5">
+        <h1>Django Projects</h1>
+        <hr>
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-4">
+                    <div class="card mb-2">
+                        <img class="card-img-top" src="{% static project.image %}" >
+                        <div class="card-body">
+                            <h3 class="card-title">{{ project.title }}</h3>
+                            <p class="card-text">{{ project.description }}</p>
+                            <a class="btn btn-primary" href="{% url 'project_detail' project.pk %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
