@@ -4,6 +4,9 @@ from forum.models import questions
 
 def forum(request):
     questionsd = questions.objects.all()
+    print(questionsd.__dict__)
+
+    # questionsd = "hi how are you?"
     context = {
         "questionsd": questionsd,
     }

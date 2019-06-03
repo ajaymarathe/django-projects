@@ -4,21 +4,15 @@
         <div class="col-md-8">
             <h1>Blog Index</h1>
             <hr>
-            {% for post in questionsd %}
-
-            <h2>Hello world</h2>
-<!--            <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>-->
-<!--            <small>-->
-<!--                {{ post.created_on.date }} |&nbsp;-->
-<!--                Categories:&nbsp;-->
-<!--                {% for category in post.categories.all %}-->
-<!--                <a href="{% url 'blog_category' category.name %}">-->
-<!--                    {{ category.name }}-->
-<!--                </a>&nbsp;-->
-<!--                {% endfor %}-->
-<!--            </small>-->
-<!--            <p>{{ post.body | slice:":400" }}...</p>-->
-<!--            {% endfor %}-->
+            {% for question in questionsd %}
+                <h2>{{question.title}}</h2>
+                <p>{{question.body}}</p>
+                <p>{{question.slug}}</p>
+                <p>{{question.category_id}}</p>
+                <p>{{question.user_id}}</p>
+                <p>{{question.created_at}}</p>
+                <p>{{question.updated_at}}</p>
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-"""realtimeforum URL Configuration
+"""blog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -14,24 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.urls import path
 from django.conf.urls import url, include
-from django.urls import path, include
-from forum.resources import QuestionResource, CategoryResource
 
-question_resource = QuestionResource()
-category_resource = CategoryResource()
+from blogApi.resources import PostsResource
+
+posts_resource = PostsResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("forum/", include("forum.urls")),
-    url(r'^api/', include(question_resource.urls)),
-    # route for the question ->
-    # api/question for all question
-    # api/question/:id for specific questions
-    url(r'^api/', include(category_resource.urls)),
-    # api/category to get all categories
-    # api/category/:id to get specific category
-
-
+    url(r'^api/', include(posts_resource.urls)),
+    # to get all post use api/posts/ with get method
+    # to make store post use api/posts/ with post method
+    # to get specific post use api/posts/:id with get method
+    # to update the post use api/posts/:id with put method
+    # to delete the post use api/posts/:id with delete method
 ]
-
