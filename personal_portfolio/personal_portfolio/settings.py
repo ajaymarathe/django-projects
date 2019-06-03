@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'realtimeapp',
+        'NAME': 'portfolio',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

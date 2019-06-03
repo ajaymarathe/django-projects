@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'laravel-blog',
+        'NAME': 'blogging-api-routes',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
