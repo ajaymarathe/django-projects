@@ -2,8 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-
-class posts(models.Model):
+class posts(models.Model): # posts models
     title = models.TextField()
     slug = models.TextField()
     body = models.TextField()
@@ -15,12 +14,11 @@ class posts(models.Model):
         db_table = 'posts' #define your db here.
 
 
-class comments(models.Model):
+class comments(models.Model): # commments models
     body = models.TextField()
     user_id = models.IntegerField()
     # post_id = models.ForeignKey(posts, on_delete=models.CASCADE)
-
-    post = models.ForeignKey(posts, on_delete=models.CASCADE)
+    post = models.ForeignKey(posts, on_delete=models.CASCADE) # relationship to post
 
     class Meta:
         db_table = 'comments' # define your db here.

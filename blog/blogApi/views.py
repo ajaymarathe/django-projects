@@ -3,14 +3,14 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.core import serializers
-import json
 
-
-from .models import posts
+from .models import posts, comments
 
 # Create your views here.
 
+# all post
 def all_post(request):
+    # post = posts.objects.all()
     post = serializers.serialize("json", posts.objects.order_by('created_at'))
     data = {
             "results": {
@@ -19,14 +19,19 @@ def all_post(request):
             }
     return JsonResponse(data)
 
+# specific post
 def post_detail(request, pk):
-    # post = serializers.serialize("json", posts.objects.get(pk=pk))
-    post = posts.objects.all(pk=pk)
-    # print(post)
-    # return JsonResponse(post)
+    # print(pk)
+    post = serializers.serialize("json", posts.objects.filter(pk=pk)) #specific post
+    comment = serializers.serialize("json", comments.objects.filter(post=pk)) # all commment related to post
+    # print(comment)
     data = {
         "results": {
             "data": post,
+            "comment": comment
         }
     }
     return JsonResponse(data)
+
+
+
